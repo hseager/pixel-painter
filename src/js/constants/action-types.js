@@ -1,2 +1,3 @@
 
-export const ADD_COLOR = "ADD_COLOR";
+export const UPDATE_COLUMNS = "UPDATE_COLUMNS";
+export const UPDATE_ROWS = "UPDATE_ROWS";

@@ -8,8 +8,8 @@ const mapStateToProps = state => {
 }
 
 var pixels = [];
-for(let i = 0; i <= 32; i++){
-    pixels.push(<Pixel />);
+for(let i = 1; i <= 8 * 8; i++){
+    pixels.push(<Pixel key={i}/>);
 }
 
 const ConnectedCanvas = ({ colors }) => (

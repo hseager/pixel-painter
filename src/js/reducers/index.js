@@ -1,16 +1,24 @@
 
-import { ADD_COLOR } from "../constants/action-types";
+import { UPDATE_COLUMNS, UPDATE_ROWS } from "../constants/action-types";
 
 const initialState = {
-    colors: []
+    columns: 8,
+    rows: 8
 }
 
 function rootReducer(state = initialState, action) {
-    if(action.type === ADD_COLOR){
+    if(action.type === UPDATE_COLUMNS){
         return Object.assign({}, state, {
-            colors: state.colors.concat(action.paylod)
+            columns: action.payload
         });
     }
+
+    if(action.type === UPDATE_ROWS){
+        return Object.assign({}, state, {
+            rows: action.payload
+        });
+    }
+
     return state;
 }
 

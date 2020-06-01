@@ -18,11 +18,17 @@ h2{
 
 .pixels{
   border: 1px solid #333;
+  max-width: 162px;
+  margin: auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .pixel{
-  border: 1px solid #999;
-  width: 10px;
-  height: 10px;
-  display: inline-block;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+  width: 20px;
+  height: 20px;
+  
 }

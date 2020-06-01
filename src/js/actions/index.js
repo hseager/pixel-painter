@@ -1,6 +1,10 @@
 
-import { ADD_COLOR } from "../constants/action-types"
+import { UPDATE_COLUMNS, UPDATE_ROWS } from "../constants/action-types"
 
-export function addColor(payload) {
-    return { type: ADD_COLOR, payload };
+export function updateColumns(payload) {
+    return { type: UPDATE_COLUMNS, payload };
+}
+
+export function updateRows(payload) {
+    return { type: UPDATE_ROWS, payload };
 }
