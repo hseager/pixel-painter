@@ -9,7 +9,9 @@ body {
   font-family: Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 40px;
+  text-align: center;
+  background: #efefef;
+  font-size: 14px;
 }
 
 h2{
@@ -18,7 +20,6 @@ h2{
 
 .pixels{
   border: 1px solid #333;
-  max-width: 162px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +29,29 @@ h2{
 .pixel{
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
-  width: 20px;
-  height: 20px;
-  
+  background: #fff;
+}
+
+.toolbar{
+  background: #ddd;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  padding: 10px;
+  margin:0 0 20px;
+  border-bottom: 1px solid #bbb;
+}
+
+.toolbar-option label{
+  margin:0 5px 0 0;
+  vertical-align: middle;
+}
+
+input[type=number]{
+  max-width: 50px;
+  margin: 0 5px;
+}
+
+input[type=range]{
+  vertical-align: middle;
 }

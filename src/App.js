@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Options from "./js/components/Options";
 import Canvas from "./js/components/Canvas";
 
