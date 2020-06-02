@@ -2,21 +2,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import Pixel from "./Pixel";
-
+import { addPixel } from "../actions"
 
 class Canvas extends React.Component {
+
     constructor(){
         super();
 
-        this.state = { borderSize: 2 }
+        this.state = { 
+            borderSize: 2,
+        }
     }
 
-    createPixels(){
-        let pixels = [];
-        for(let i = 1; i <= this.props.columns * this.props.rows; i++){
-            pixels.push(<Pixel key={i}/>);
+    componentDidMount() {
+        for(let i = 0; i < this.props.columns * this.props.rows; i++){
+            this.props.dispatch(addPixel());
         }
-        return pixels;
     }
 
     canvasStyle(){
@@ -28,7 +29,9 @@ class Canvas extends React.Component {
     render(){
         return (
             <div className="pixels" style={this.canvasStyle()}>
-                {this.createPixels()}
+                {this.props.pixels.map(pixel => (
+                    <Pixel key={pixel.id} />
+                ))}
             </div>
         )
     };
@@ -38,8 +41,15 @@ const mapStateToProps = state => {
     return { 
         rows: state.rows,
         columns: state.columns,
-        pixelSize: state.pixelSize
+        pixelSize: state.pixelSize,
+        pixels: state.pixels
     }
 }
 
-export default connect(mapStateToProps)(Canvas);
+const mapDispatchToProps = dispatch => {
+    return {
+        dispatch
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Canvas);

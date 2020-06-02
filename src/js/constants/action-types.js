@@ -2,3 +2,4 @@
 export const UPDATE_PIXEL_SIZE = "UPDATE_PIXEL_SIZE";
 export const UPDATE_COLUMNS = "UPDATE_COLUMNS";
 export const UPDATE_ROWS = "UPDATE_ROWS";
+export const ADD_PIXEL = "ADD_PIXEL";
