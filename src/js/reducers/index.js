@@ -3,7 +3,8 @@ import {
     UPDATE_PIXEL_SIZE,
     UPDATE_COLUMNS,
     UPDATE_ROWS,
-    ADD_PIXEL
+    ADD_PIXEL,
+    DELETE_PIXEL
 } from "../constants/action-types";
 
 const initialState = {
@@ -42,6 +43,12 @@ function rootReducer(state = initialState, action) {
                     color: action.color,
                 }
             ]
+        });
+    }
+
+    if(action.type === DELETE_PIXEL){
+        return Object.assign({}, state, {
+            pixels: state.pixels.slice(0, -1),
         });
     }
 

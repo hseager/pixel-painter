@@ -3,7 +3,8 @@ import {
     UPDATE_PIXEL_SIZE,
     UPDATE_COLUMNS,
     UPDATE_ROWS,
-    ADD_PIXEL
+    ADD_PIXEL,
+    DELETE_PIXEL
 } from "../constants/action-types";
 
 export function updatePixelSize(pixelSize) {
@@ -33,5 +34,11 @@ export function addPixel() {
         type: ADD_PIXEL, 
         id: nextPixelId++,
         color: '#fff'
+    };
+}
+
+export function deletePixel() {
+    return { 
+        type: DELETE_PIXEL,
     };
 }

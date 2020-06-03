@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateColumns, updateRows, updatePixelSize, addPixel } from "../actions"
+import { updateColumns, updateRows, updatePixelSize, addPixel, deletePixel } from "../actions"
 
 class Options extends React.Component {
 
@@ -12,19 +12,38 @@ class Options extends React.Component {
     }
 
     handleColumnChange(event){
-        this.props.dispatch(updateColumns(event.target.value));
+
+        let newColumnCount = event.target.value;
+        let columnDifference = newColumnCount - this.props.columns;
+
+        this.props.dispatch(updateColumns(newColumnCount));
+
+        if(columnDifference > 0){
+            for(let i = 0; i < columnDifference * this.props.rows; i++){
+                this.props.dispatch(addPixel());
+            }
+        } else if(columnDifference < 0){
+            for(let i = 0; i > columnDifference * this.props.rows; i--){
+                this.props.dispatch(deletePixel());
+            }
+        }
+
     }
 
     handleRowChange(event){
 
         let newRowCount = event.target.value;
-        this.props.dispatch(updateRows(newRowCount));
-        
-        // dont work, need input value
+        let rowDifference = newRowCount - this.props.rows;
 
-        if(newRowCount > this.props.rows){
-            for(let i = 0; i < this.props.columns; i++){
+        this.props.dispatch(updateRows(newRowCount));
+
+        if(rowDifference > 0){
+            for(let i = 0; i < rowDifference * this.props.columns; i++){
                 this.props.dispatch(addPixel());
+            }
+        } else if(rowDifference < 0){
+            for(let i = 0; i > rowDifference * this.props.columns; i--){
+                this.props.dispatch(deletePixel());
             }
         }
         
@@ -43,14 +62,16 @@ class Options extends React.Component {
                         type="number"
                         value={this.props.columns}
                         onChange={this.handleColumnChange}
-                        max="64"
+                        max="50"
+                        min="2"
                     />
                     x
                     <input 
                         type="number"
                         value={this.props.rows}
                         onChange={this.handleRowChange}
-                        max="64"
+                        max="50"
+                        min="2"
                     />
                 </div>
                 <div className="toolbar-option">
