@@ -4,4 +4,6 @@ export const UPDATE_COLUMNS = "UPDATE_COLUMNS";
 export const UPDATE_ROWS = "UPDATE_ROWS";
 export const ADD_PIXEL = "ADD_PIXEL";
 export const DELETE_PIXEL = "DELETE_PIXEL";
+export const UPDATE_PIXEL = "UPDATE_PIXEL";
 export const HIDE_PIXEL_GRID = "HIDE_PIXEL_GRID";
+export const UPDATE_EDITOR_COLOR = "UPDATE_EDITOR_COLOR";

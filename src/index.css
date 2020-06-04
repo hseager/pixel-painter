@@ -60,7 +60,6 @@ input[type=number]{
   margin: 0 5px;
 }
 
-input[type=range],
-input[type=checkbox]{
+.toolbar input{
   vertical-align: middle;
 }

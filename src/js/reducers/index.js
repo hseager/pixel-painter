@@ -5,7 +5,9 @@ import {
     UPDATE_ROWS,
     ADD_PIXEL,
     DELETE_PIXEL,
-    HIDE_PIXEL_GRID
+    UPDATE_PIXEL,
+    HIDE_PIXEL_GRID,
+    UPDATE_EDITOR_COLOR
 } from "../constants/action-types";
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
     rows: 24,
     pixels: [],
     hidePixelGrid: false,
+    editorColor: '#11b6df',
 }
 
 function rootReducer(state = initialState, action) {
@@ -54,9 +57,23 @@ function rootReducer(state = initialState, action) {
         });
     }
 
+    if(action.type === UPDATE_PIXEL){
+        return Object.assign({}, state, {
+            pixels: state.pixels.map(pixel => 
+                pixel.id === action.id ? { ...pixel, color: action.color } : pixel
+            ),
+        });
+    }    
+
     if(action.type === HIDE_PIXEL_GRID){
         return Object.assign({}, state, {
             hidePixelGrid: action.hide,
+        });
+    }
+
+    if(action.type === UPDATE_EDITOR_COLOR){
+        return Object.assign({}, state, {
+            editorColor: action.color,
         });
     }
 

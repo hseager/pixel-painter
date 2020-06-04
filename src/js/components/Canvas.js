@@ -30,7 +30,7 @@ class Canvas extends React.Component {
         return (
             <div className="pixels" style={this.canvasStyle()}>
                 {this.props.pixels.map(pixel => (
-                    <Pixel key={pixel.id} />
+                    <Pixel key={pixel.id} id={pixel.id} color={pixel.color} />
                 ))}
             </div>
         )

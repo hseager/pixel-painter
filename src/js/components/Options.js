@@ -1,6 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateColumns, updateRows, updatePixelSize, addPixel, deletePixel, hidePixelGrid } from "../actions"
+import { 
+    updateColumns,
+    updateRows, 
+    updatePixelSize, 
+    addPixel, 
+    deletePixel, 
+    hidePixelGrid,
+    updateEditorColor
+} from "../actions"
 
 class Options extends React.Component {
 
@@ -10,6 +18,7 @@ class Options extends React.Component {
         this.handleRowChange = this.handleRowChange.bind(this);
         this.handlePixelSizeChange = this.handlePixelSizeChange.bind(this);
         this.handleHidePixelGrid = this.handleHidePixelGrid.bind(this);
+        this.handleColorChange = this.handleColorChange.bind(this);
     }
 
     handleColumnChange(event){
@@ -58,6 +67,10 @@ class Options extends React.Component {
         this.props.dispatch(hidePixelGrid(event.target.checked));
     }
 
+    handleColorChange(event){
+        this.props.dispatch(updateEditorColor(event.target.value));
+    }
+
     render(){
         return (
             <div className="toolbar">
@@ -77,6 +90,15 @@ class Options extends React.Component {
                         onChange={this.handleRowChange}
                         max="50"
                         min="2"
+                    />
+                </div>
+                <div className="toolbar-option">
+                    <label htmlFor="color-picker">Color:</label>
+                    <input 
+                        id="color-picker"
+                        type="color"
+                        value={this.props.editorColor}
+                        onChange={this.handleColorChange}
                     />
                 </div>
                 <div className="toolbar-option">
@@ -109,7 +131,8 @@ const mapStateToProps = state => {
         rows: state.rows,
         columns: state.columns,
         pixels: state.pixels,
-        hidePixelGrid: state.hidePixelGrid
+        hidePixelGrid: state.hidePixelGrid,
+        editorColor: state.editorColor
     }
 }
 

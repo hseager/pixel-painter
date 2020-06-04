@@ -5,7 +5,9 @@ import {
     UPDATE_ROWS,
     ADD_PIXEL,
     DELETE_PIXEL,
-    HIDE_PIXEL_GRID
+    UPDATE_PIXEL,
+    HIDE_PIXEL_GRID,
+    UPDATE_EDITOR_COLOR
 } from "../constants/action-types";
 
 export function updatePixelSize(pixelSize) {
@@ -44,9 +46,24 @@ export function deletePixel() {
     };
 }
 
+export function updatePixel(pixel){
+    return {
+        type: UPDATE_PIXEL,
+        id: pixel.id,
+        color: pixel.color
+    }
+}
+
 export function hidePixelGrid(hide){
     return {
         type: HIDE_PIXEL_GRID,
         hide
+    }
+}
+
+export function updateEditorColor(color){
+    return {
+        type: UPDATE_EDITOR_COLOR,
+        color
     }
 }
