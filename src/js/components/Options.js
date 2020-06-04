@@ -30,7 +30,7 @@ class Options extends React.Component {
 
         if(columnDifference > 0){
             for(let i = 0; i < columnDifference * this.props.rows; i++){
-                this.props.dispatch(addPixel());
+                this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
             }
         } else if(columnDifference < 0){
             for(let i = 0; i > columnDifference * this.props.rows; i--){
@@ -49,7 +49,7 @@ class Options extends React.Component {
 
         if(rowDifference > 0){
             for(let i = 0; i < rowDifference * this.props.columns; i++){
-                this.props.dispatch(addPixel());
+                this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
             }
         } else if(rowDifference < 0){
             for(let i = 0; i > rowDifference * this.props.columns; i--){
@@ -132,7 +132,8 @@ const mapStateToProps = state => {
         columns: state.columns,
         pixels: state.pixels,
         hidePixelGrid: state.hidePixelGrid,
-        editorColor: state.editorColor
+        editorColor: state.editorColor,
+        defaultPixelColor: state.defaultPixelColor
     }
 }
 
