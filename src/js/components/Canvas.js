@@ -16,7 +16,7 @@ class Canvas extends React.Component {
 
     componentDidMount() {
         for(let i = 0; i < this.props.columns * this.props.rows; i++){
-            this.props.dispatch(addPixel());
+            this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
         }
     }
 
@@ -28,7 +28,10 @@ class Canvas extends React.Component {
 
     render(){
         return (
-            <div className="pixels" style={this.canvasStyle()}>
+            <div 
+                className="pixels" 
+                style={this.canvasStyle()}
+            >
                 {this.props.pixels.map(pixel => (
                     <Pixel key={pixel.id} id={pixel.id} color={pixel.color} />
                 ))}
@@ -42,7 +45,8 @@ const mapStateToProps = state => {
         rows: state.rows,
         columns: state.columns,
         pixelSize: state.pixelSize,
-        pixels: state.pixels
+        pixels: state.pixels,
+        defaultPixelColor: state.defaultPixelColor
     }
 }
 

@@ -24,18 +24,29 @@ class Pixel extends React.Component {
         return pixelStyle;
     }
 
-    handlePixelClick(id){
-        this.props.dispatch(updatePixel({ 
-            id, 
-            color: this.props.editorColor
-        }));
+    handlePixelClick(event, id){
+        event.preventDefault();
+        if(event.buttons === 1){
+            this.props.dispatch(updatePixel({ 
+                id, 
+                color: this.props.editorColor
+            }));
+        } else if(event.buttons === 2){
+            this.props.dispatch(updatePixel({ 
+                id, 
+                color: this.props.defaultPixelColor
+            }));
+        }
+        return false;
     }
 
     render(){
         return <div 
                 className="pixel" 
                 style={this.pixelStyle()}
-                onClick={() => this.handlePixelClick(this.props.id)}
+                onMouseDown={(event) => this.handlePixelClick(event, this.props.id)}
+                onMouseEnter={(event) => this.handlePixelClick(event, this.props.id)}
+                onContextMenu={(event) => event.preventDefault()}
     ></div>;
     };
 }
@@ -44,7 +55,8 @@ const mapStateToProps = state => {
     return { 
         pixelSize: state.pixelSize,
         hidePixelGrid: state.hidePixelGrid,
-        editorColor: state.editorColor
+        editorColor: state.editorColor,
+        defaultPixelColor: state.defaultPixelColor
     }
 }
 

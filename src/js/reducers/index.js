@@ -17,6 +17,7 @@ const initialState = {
     pixels: [],
     hidePixelGrid: false,
     editorColor: '#11b6df',
+    defaultPixelColor: '#fff',
 }
 
 function rootReducer(state = initialState, action) {

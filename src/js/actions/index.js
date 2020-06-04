@@ -32,11 +32,11 @@ export function updateRows(rows) {
 }
 
 let nextPixelId = 0;
-export function addPixel() {
+export function addPixel(pixel) {
     return { 
         type: ADD_PIXEL, 
         id: nextPixelId++,
-        color: '#fff'
+        color: pixel.color
     };
 }
 
