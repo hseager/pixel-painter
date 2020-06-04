@@ -4,10 +4,17 @@ import { connect } from "react-redux";
 class Pixel extends React.Component {
 
     pixelStyle(){
-        return {
+        let pixelStyle = {
             width: this.props.pixelSize + 'px',
             height: this.props.pixelSize + 'px'
         }
+        
+        if(this.props.hidePixelGrid){
+            pixelStyle.borderRight = 0;
+            pixelStyle.borderBottom = 0;
+        }
+
+        return pixelStyle;
     }
 
     render(){
@@ -17,7 +24,8 @@ class Pixel extends React.Component {
     
 const mapStateToProps = state => {
     return { 
-        pixelSize: state.pixelSize
+        pixelSize: state.pixelSize,
+        hidePixelGrid: state.hidePixelGrid
     }
 }
 

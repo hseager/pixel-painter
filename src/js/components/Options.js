@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateColumns, updateRows, updatePixelSize, addPixel, deletePixel } from "../actions"
+import { updateColumns, updateRows, updatePixelSize, addPixel, deletePixel, hidePixelGrid } from "../actions"
 
 class Options extends React.Component {
 
@@ -9,6 +9,7 @@ class Options extends React.Component {
         this.handleColumnChange = this.handleColumnChange.bind(this);
         this.handleRowChange = this.handleRowChange.bind(this);
         this.handlePixelSizeChange = this.handlePixelSizeChange.bind(this);
+        this.handleHidePixelGrid = this.handleHidePixelGrid.bind(this);
     }
 
     handleColumnChange(event){
@@ -53,6 +54,10 @@ class Options extends React.Component {
         this.props.dispatch(updatePixelSize(event.target.value));
     }
 
+    handleHidePixelGrid(event){
+        this.props.dispatch(hidePixelGrid(event.target.checked));
+    }
+
     render(){
         return (
             <div className="toolbar">
@@ -75,6 +80,15 @@ class Options extends React.Component {
                     />
                 </div>
                 <div className="toolbar-option">
+                    <label htmlFor="hide-pixel-grid">Hide pixel grid:</label>
+                    <input 
+                        id="hide-pixel-grid"
+                        type="checkbox"
+                        checked={this.props.hidePixelGrid}
+                        onChange={this.handleHidePixelGrid}
+                    />
+                </div>
+                <div className="toolbar-option">
                     <label>Zoom:</label>
                     <input 
                         type="range"
@@ -94,7 +108,8 @@ const mapStateToProps = state => {
         pixelSize: state.pixelSize,
         rows: state.rows,
         columns: state.columns,
-        pixels: state.pixels
+        pixels: state.pixels,
+        hidePixelGrid: state.hidePixelGrid
     }
 }
 

@@ -4,14 +4,16 @@ import {
     UPDATE_COLUMNS,
     UPDATE_ROWS,
     ADD_PIXEL,
-    DELETE_PIXEL
+    DELETE_PIXEL,
+    HIDE_PIXEL_GRID
 } from "../constants/action-types";
 
 const initialState = {
     pixelSize: 16,
     columns: 24,
     rows: 24,
-    pixels: []
+    pixels: [],
+    hidePixelGrid: false,
 }
 
 function rootReducer(state = initialState, action) {
@@ -49,6 +51,12 @@ function rootReducer(state = initialState, action) {
     if(action.type === DELETE_PIXEL){
         return Object.assign({}, state, {
             pixels: state.pixels.slice(0, -1),
+        });
+    }
+
+    if(action.type === HIDE_PIXEL_GRID){
+        return Object.assign({}, state, {
+            hidePixelGrid: action.hide,
         });
     }
 

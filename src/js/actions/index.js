@@ -4,7 +4,8 @@ import {
     UPDATE_COLUMNS,
     UPDATE_ROWS,
     ADD_PIXEL,
-    DELETE_PIXEL
+    DELETE_PIXEL,
+    HIDE_PIXEL_GRID
 } from "../constants/action-types";
 
 export function updatePixelSize(pixelSize) {
@@ -41,4 +42,11 @@ export function deletePixel() {
     return { 
         type: DELETE_PIXEL,
     };
+}
+
+export function hidePixelGrid(hide){
+    return {
+        type: HIDE_PIXEL_GRID,
+        hide
+    }
 }
