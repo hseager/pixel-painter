@@ -17,7 +17,7 @@ const initialState = {
     pixels: [],
     hidePixelGrid: false,
     editorColor: '#11b6df',
-    defaultPixelColor: '#fff',
+    defaultPixelColor: 'transparent',
 }
 
 function rootReducer(state = initialState, action) {
@@ -41,21 +41,47 @@ function rootReducer(state = initialState, action) {
     }
 
     if(action.type === ADD_PIXEL){
-        return Object.assign({}, state, {
-            pixels: [
-                ...state.pixels,
-                {
-                    id: action.id,
-                    color: action.color,
-                }
-            ]
-        });
+        if(action.index != null){
+            // Add pixel at certain array index
+            return Object.assign({}, state, {
+                pixels: [
+                    ...state.pixels.slice(0, action.index),
+                    {
+                        id: action.id,
+                        color: action.color,
+                    },
+                    ...state.pixels.slice(action.index),
+                ],
+            });
+        } else {
+            // Add pixel to the end of array
+            return Object.assign({}, state, {
+                pixels: [
+                    ...state.pixels,
+                    {
+                        id: action.id,
+                        color: action.color,
+                    }
+                ]
+            });
+        }
     }
 
     if(action.type === DELETE_PIXEL){
-        return Object.assign({}, state, {
-            pixels: state.pixels.slice(0, -1),
-        });
+        if(action.index != null){
+            // Delete pixel at certain array index
+            return Object.assign({}, state, {
+                pixels: [
+                    ...state.pixels.slice(0, action.index),
+                    ...state.pixels.slice(action.index + 1)
+                ],
+            });
+        } else {
+            // Delete pixel from end of array
+            return Object.assign({}, state, {
+                pixels: state.pixels.slice(0, -1),
+            });
+        }
     }
 
     if(action.type === UPDATE_PIXEL){
@@ -64,7 +90,7 @@ function rootReducer(state = initialState, action) {
                 pixel.id === action.id ? { ...pixel, color: action.color } : pixel
             ),
         });
-    }    
+    }
 
     if(action.type === HIDE_PIXEL_GRID){
         return Object.assign({}, state, {

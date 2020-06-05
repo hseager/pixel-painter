@@ -36,13 +36,15 @@ export function addPixel(pixel) {
     return { 
         type: ADD_PIXEL, 
         id: nextPixelId++,
-        color: pixel.color
+        color: pixel.color,
+        index: pixel.index
     };
 }
 
-export function deletePixel() {
+export function deletePixel(pixel) {
     return { 
         type: DELETE_PIXEL,
+        index: pixel ? pixel.index : null
     };
 }
 
