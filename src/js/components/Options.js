@@ -80,6 +80,7 @@ class Options extends React.Component {
                         type="number"
                         value={this.props.columns}
                         onChange={this.handleColumnChange}
+                        onKeyDown={(event) => event.preventDefault()}
                         max="50"
                         min="2"
                     />
@@ -88,6 +89,7 @@ class Options extends React.Component {
                         type="number"
                         value={this.props.rows}
                         onChange={this.handleRowChange}
+                        onKeyDown={(event) => event.preventDefault()}
                         max="50"
                         min="2"
                     />

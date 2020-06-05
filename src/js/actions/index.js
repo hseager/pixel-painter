@@ -44,7 +44,7 @@ export function addPixel(pixel) {
 export function deletePixel(pixel) {
     return { 
         type: DELETE_PIXEL,
-        index: pixel ? pixel.index : null
+        index: pixel && pixel.index ? pixel.index : null
     };
 }
 
