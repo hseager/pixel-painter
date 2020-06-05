@@ -2,13 +2,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import Pixel from "./Pixel";
-import { addPixel } from "../actions"
+import { addPixel } from "../actions";
 
 class Canvas extends React.Component {
 
     constructor(){
         super();
-
         this.state = { 
             borderSize: 2,
         }

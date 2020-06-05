@@ -7,7 +7,8 @@ import {
     DELETE_PIXEL,
     UPDATE_PIXEL,
     HIDE_PIXEL_GRID,
-    UPDATE_EDITOR_COLOR
+    UPDATE_EDITOR_COLOR,
+    ADD_PALETTE_COLOR
 } from "../constants/action-types";
 
 export function updatePixelSize(pixelSize) {
@@ -68,4 +69,13 @@ export function updateEditorColor(color){
         type: UPDATE_EDITOR_COLOR,
         color
     }
+}
+
+let nextPaletteColorId = 0;
+export function addPaletteColor(color) {
+    return { 
+        type: ADD_PALETTE_COLOR, 
+        id: nextPaletteColorId++,
+        value: color
+    };
 }

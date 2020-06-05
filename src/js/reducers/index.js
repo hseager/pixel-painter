@@ -7,7 +7,8 @@ import {
     DELETE_PIXEL,
     UPDATE_PIXEL,
     HIDE_PIXEL_GRID,
-    UPDATE_EDITOR_COLOR
+    UPDATE_EDITOR_COLOR,
+    ADD_PALETTE_COLOR
 } from "../constants/action-types";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     hidePixelGrid: false,
     editorColor: '#11b6df',
     defaultPixelColor: 'transparent',
+    colorPalette: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -101,6 +103,18 @@ function rootReducer(state = initialState, action) {
     if(action.type === UPDATE_EDITOR_COLOR){
         return Object.assign({}, state, {
             editorColor: action.color,
+        });
+    }
+
+    if(action.type === ADD_PALETTE_COLOR){
+        return Object.assign({}, state, {
+            colorPalette: [
+                ...state.colorPalette,
+                {
+                    id: action.id,
+                    value: action.value,
+                }
+            ]
         });
     }
 
