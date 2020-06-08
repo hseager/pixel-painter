@@ -63,3 +63,20 @@ input[type=number]{
 .toolbar input{
   vertical-align: middle;
 }
+
+.color-palette{
+  max-width: 350px;
+  margin: auto;
+}
+
+.colors{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}

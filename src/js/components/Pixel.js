@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updatePixel } from "../actions"
+import { updatePixel, addPaletteColor } from "../actions"
 
 class Pixel extends React.Component {
 
@@ -31,6 +31,11 @@ class Pixel extends React.Component {
                 id, 
                 color: this.props.editorColor
             }));
+
+            let colorPalette = this.props.colorPalette.find(x => x.value === this.props.editorColor);
+            if(typeof colorPalette === 'undefined'){
+                this.props.dispatch(addPaletteColor(this.props.editorColor));
+            }
         } else if(event.buttons === 2){
             this.props.dispatch(updatePixel({ 
                 id, 
@@ -56,7 +61,8 @@ const mapStateToProps = state => {
         pixelSize: state.pixelSize,
         hidePixelGrid: state.hidePixelGrid,
         editorColor: state.editorColor,
-        defaultPixelColor: state.defaultPixelColor
+        defaultPixelColor: state.defaultPixelColor,
+        colorPalette: state.colorPalette
     }
 }
 
