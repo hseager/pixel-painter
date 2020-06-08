@@ -29,12 +29,17 @@ class Options extends React.Component {
         this.props.dispatch(updateColumns(newColumnCount));
 
         if(columnDifference > 0){
-            for(let i = 0; i < columnDifference * this.props.rows; i++){
-                this.props.dispatch(addPixel({ index: i * this.props.columns + i, color: this.props.defaultPixelColor }));
+            for(let i = 1; i <= columnDifference * this.props.rows; i++){
+                this.props.dispatch(addPixel({ 
+                    index: i * this.props.columns + i, 
+                    color: this.props.defaultPixelColor
+                }));
             }
         } else if(columnDifference < 0){
             for(let i = 0; i < -columnDifference * this.props.rows; i++){
-                this.props.dispatch(deletePixel({ index: i * this.props.columns - i }));
+                this.props.dispatch(deletePixel({ 
+                    index: i * this.props.columns - i
+                }));
             }
         }
 
