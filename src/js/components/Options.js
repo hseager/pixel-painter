@@ -123,8 +123,8 @@ class Options extends React.Component {
                         type="range"
                         value={this.props.pixelSize}
                         onChange={this.handlePixelSizeChange}
-                        min="2"
-                        max="50"
+                        min="1"
+                        max="35"
                     />
                 </div>
             </div>
