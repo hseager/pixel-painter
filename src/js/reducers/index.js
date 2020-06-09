@@ -19,7 +19,8 @@ const initialState = {
     hidePixelGrid: false,
     editorColor: '#11b6df',
     defaultPixelColor: 'transparent',
-    colorPalette: []
+    colorPalette: [],
+    canvasBorderSize: 2,
 }
 
 function rootReducer(state = initialState, action) {

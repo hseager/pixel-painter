@@ -26,6 +26,12 @@ class Options extends React.Component {
         let newColumnCount = event.target.value;
         let columnDifference = newColumnCount - this.props.columns;
 
+        let canvasWidth = this.props.pixelSize * newColumnCount + this.props.canvasBorderSize;
+        let windowWidth = document.body.clientWidth;
+
+        if(canvasWidth >= windowWidth)
+            return false;
+
         this.props.dispatch(updateColumns(newColumnCount));
 
         if(columnDifference > 0){
@@ -65,7 +71,15 @@ class Options extends React.Component {
     }
 
     handlePixelSizeChange(event){
-        this.props.dispatch(updatePixelSize(event.target.value));
+
+        let newPixelSize = event.target.value;
+        let canvasWidth = newPixelSize * this.props.columns + this.props.canvasBorderSize;
+        let windowWidth = document.body.clientWidth;
+
+        if(canvasWidth >= windowWidth)
+            return false;
+
+        this.props.dispatch(updatePixelSize(newPixelSize));
     }
 
     handleHidePixelGrid(event){
@@ -140,7 +154,8 @@ const mapStateToProps = state => {
         pixels: state.pixels,
         hidePixelGrid: state.hidePixelGrid,
         editorColor: state.editorColor,
-        defaultPixelColor: state.defaultPixelColor
+        defaultPixelColor: state.defaultPixelColor,
+        canvasBorderSize: state.canvasBorderSize
     }
 }
 

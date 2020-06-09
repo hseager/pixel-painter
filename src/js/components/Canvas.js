@@ -6,13 +6,6 @@ import { addPixel } from "../actions";
 
 class Canvas extends React.Component {
 
-    constructor(){
-        super();
-        this.state = { 
-            borderSize: 2,
-        }
-    }
-
     componentDidMount() {
         for(let i = 0; i < this.props.columns * this.props.rows; i++){
             this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
@@ -20,8 +13,9 @@ class Canvas extends React.Component {
     }
 
     canvasStyle(){
+        let canvasWidth = this.props.pixelSize * this.props.columns + this.props.canvasBorderSize;
         return {
-            maxWidth: (this.props.pixelSize * this.props.columns + this.state.borderSize) + 'px',
+            maxWidth: canvasWidth + 'px',
         }
     };
 
@@ -45,7 +39,8 @@ const mapStateToProps = state => {
         columns: state.columns,
         pixelSize: state.pixelSize,
         pixels: state.pixels,
-        defaultPixelColor: state.defaultPixelColor
+        defaultPixelColor: state.defaultPixelColor,
+        canvasBorderSize: state.canvasBorderSize
     }
 }
 
