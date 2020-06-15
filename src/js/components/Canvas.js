@@ -44,10 +44,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        dispatch
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Canvas);
+export default connect(mapStateToProps)(Canvas);
