@@ -31,11 +31,7 @@ class Pixel extends React.Component {
                 id, 
                 color: this.props.editorColor
             }));
-
-            let colorPalette = this.props.colorPalette.find(x => x.value === this.props.editorColor);
-            if(typeof colorPalette === 'undefined'){
-                this.props.dispatch(addPaletteColor(this.props.editorColor));
-            }
+            this.props.dispatch(addPaletteColor(this.props.editorColor));
         } else if(event.buttons === 2){
             this.props.dispatch(updatePixel({ 
                 id, 

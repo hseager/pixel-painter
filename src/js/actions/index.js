@@ -72,7 +72,7 @@ export function updateEditorColor(color){
 }
 
 let nextPaletteColorId = 0;
-export function addPaletteColor(color) {
+export function addPaletteColor(color){
     return { 
         type: ADD_PALETTE_COLOR, 
         id: nextPaletteColorId++,

@@ -108,15 +108,20 @@ function rootReducer(state = initialState, action) {
     }
 
     if(action.type === ADD_PALETTE_COLOR){
-        return Object.assign({}, state, {
-            colorPalette: [
-                ...state.colorPalette,
-                {
-                    id: action.id,
-                    value: action.value,
-                }
-            ]
-        });
+        
+        let colorInPalette = state.colorPalette.some(x => x.value === action.value);
+
+        if(!colorInPalette){
+            return Object.assign({}, state, {
+                colorPalette: [
+                    ...state.colorPalette,
+                    {
+                        id: action.id,
+                        value: action.value,
+                    }
+                ]
+            });
+        }
     }
 
     return state;
