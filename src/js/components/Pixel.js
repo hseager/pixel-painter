@@ -31,6 +31,8 @@ class Pixel extends React.Component {
                 id, 
                 color: this.props.editorColor
             }));
+            // Below is causing UI Lag on first click and I'm not sure why.
+            // Tried using redux-thunk, but no change...
             this.props.dispatch(addPaletteColor(this.props.editorColor));
         } else if(event.buttons === 2){
             this.props.dispatch(updatePixel({ 
@@ -46,7 +48,7 @@ class Pixel extends React.Component {
                 className="pixel" 
                 style={this.pixelStyle()}
                 onMouseDown={(event) => this.handlePixelClick(event, this.props.id)}
-                onMouseEnter={(event) => this.handlePixelClick(event, this.props.id)}
+                onMouseOver={(event) => this.handlePixelClick(event, this.props.id)}
                 onContextMenu={(event) => event.preventDefault()}
     ></div>;
     };

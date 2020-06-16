@@ -26,27 +26,31 @@ const initialState = {
 function rootReducer(state = initialState, action) {
 
     if(action.type === UPDATE_PIXEL_SIZE){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             pixelSize: action.pixelSize
-        });
+        }
     }
 
     if(action.type === UPDATE_COLUMNS){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             columns: action.columns
-        });
+        }
     }
 
     if(action.type === UPDATE_ROWS){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             rows: action.rows
-        });
+        }
     }
 
     if(action.type === ADD_PIXEL){
         if(action.index != null){
             // Add pixel at certain array index
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 pixels: [
                     ...state.pixels.slice(0, action.index),
                     {
@@ -55,10 +59,11 @@ function rootReducer(state = initialState, action) {
                     },
                     ...state.pixels.slice(action.index),
                 ],
-            });
+            }
         } else {
             // Add pixel to the end of array
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 pixels: [
                     ...state.pixels,
                     {
@@ -66,53 +71,57 @@ function rootReducer(state = initialState, action) {
                         color: action.color,
                     }
                 ]
-            });
+            }
         }
     }
 
     if(action.type === DELETE_PIXEL){
         if(action.index != null){
             // Delete pixel at certain array index
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 pixels: [
                     ...state.pixels.slice(0, action.index),
                     ...state.pixels.slice(action.index + 1)
                 ],
-            });
+            }
         } else {
             // Delete pixel from end of array
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 pixels: state.pixels.slice(0, -1),
-            });
+            }
         }
     }
 
     if(action.type === UPDATE_PIXEL){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             pixels: state.pixels.map(pixel => 
                 pixel.id === action.id ? { ...pixel, color: action.color } : pixel
             ),
-        });
+        };
     }
 
     if(action.type === HIDE_PIXEL_GRID){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             hidePixelGrid: action.hide,
-        });
+        }
     }
 
     if(action.type === UPDATE_EDITOR_COLOR){
-        return Object.assign({}, state, {
+        return {
+            ...state,
             editorColor: action.color,
-        });
+        }
     }
 
     if(action.type === ADD_PALETTE_COLOR){
-        
         let colorInPalette = state.colorPalette.some(x => x.value === action.value);
-
         if(!colorInPalette){
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 colorPalette: [
                     ...state.colorPalette,
                     {
@@ -120,7 +129,7 @@ function rootReducer(state = initialState, action) {
                         value: action.value,
                     }
                 ]
-            });
+            }
         }
     }
 
