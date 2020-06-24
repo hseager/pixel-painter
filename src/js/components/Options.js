@@ -36,8 +36,9 @@ class Options extends React.Component {
 
         if(columnDifference > 0){
             for(let i = 1; i <= columnDifference * this.props.rows; i++){
+                let newColumnIndex = i * this.props.columns + i - 1;
                 this.props.dispatch(addPixel({ 
-                    index: i * this.props.columns + i, 
+                    index: newColumnIndex, 
                     color: this.props.defaultPixelColor
                 }));
             }
