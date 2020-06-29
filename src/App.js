@@ -2,6 +2,7 @@ import React from 'react';
 import Options from "./js/components/Options";
 import Canvas from "./js/components/Canvas";
 import ColorPalette from "./js/components/ColorPalette";
+import Controls from "./js/components/Controls";
 
 function App(){
   return (  
@@ -10,6 +11,7 @@ function App(){
       <Options />
       <Canvas />
       <ColorPalette />
+      <Controls />
     </div>
   );
 };

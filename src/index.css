@@ -80,3 +80,20 @@ input[type=number]{
   height: 25px;
   margin: 5px;
 }
+
+.controls{
+  margin: 40px 0 20px;
+}
+
+.control-button{
+  margin: 0 20px;
+  padding: 8px 16px;
+  background: #eee;
+  border-radius: 3px;
+  border: 1px solid #666;
+  cursor: pointer;
+}
+
+.control-button:hover{
+  background: #f7f7f7;
+}
