@@ -31,8 +31,6 @@ class Pixel extends React.Component {
                 id, 
                 color: this.props.editorColor
             }));
-            // Below is causing UI Lag on first click and I'm not sure why.
-            // Tried using redux-thunk, but no change...
             this.props.dispatch(addPaletteColor(this.props.editorColor));
         } else if(event.buttons === 2){
             this.props.dispatch(updatePixel({ 
@@ -59,8 +57,7 @@ const mapStateToProps = state => {
         pixelSize: state.pixelSize,
         hidePixelGrid: state.hidePixelGrid,
         editorColor: state.editorColor,
-        defaultPixelColor: state.defaultPixelColor,
-        colorPalette: state.colorPalette
+        defaultPixelColor: state.defaultPixelColor
     }
 }
 
