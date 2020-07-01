@@ -8,7 +8,8 @@ import {
     UPDATE_PIXEL,
     HIDE_PIXEL_GRID,
     UPDATE_EDITOR_COLOR,
-    ADD_PALETTE_COLOR
+    ADD_PALETTE_COLOR,
+    CLEAR_CANVAS
 } from "../constants/action-types";
 
 const initialState = {
@@ -130,6 +131,18 @@ function rootReducer(state = initialState, action) {
                     }
                 ]
             }
+        }
+    }
+
+    if(action.type === CLEAR_CANVAS){
+        return {
+            ...state,
+            pixels: state.pixels.map(pixel => {
+                let newPixel = pixel;
+                newPixel.color = state.defaultPixelColor;
+                return newPixel;
+            }),
+            colorPalette: [],
         }
     }
 

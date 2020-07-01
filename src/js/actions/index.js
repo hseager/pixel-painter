@@ -10,7 +10,8 @@ import {
     UPDATE_PIXEL,
     HIDE_PIXEL_GRID,
     UPDATE_EDITOR_COLOR,
-    ADD_PALETTE_COLOR
+    ADD_PALETTE_COLOR,
+    CLEAR_CANVAS
 } from "../constants/action-types";
 
 export function updatePixelSize(pixelSize) {
@@ -78,4 +79,10 @@ export function addPaletteColor(color){
         id: uuid(),
         value: color
     };
+}
+
+export function clearCanvas(){
+    return {
+        type: CLEAR_CANVAS
+    }
 }
