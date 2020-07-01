@@ -11,6 +11,7 @@ import {
     HIDE_PIXEL_GRID,
     UPDATE_EDITOR_COLOR,
     ADD_PALETTE_COLOR,
+    REMOVE_PALETTE_COLOR,
     CLEAR_CANVAS
 } from "../constants/action-types";
 
@@ -77,7 +78,14 @@ export function addPaletteColor(color){
     return { 
         type: ADD_PALETTE_COLOR, 
         id: uuid(),
-        value: color
+        color
+    };
+}
+
+export function removePaletteColor(color){
+    return { 
+        type: REMOVE_PALETTE_COLOR,
+        color
     };
 }
 

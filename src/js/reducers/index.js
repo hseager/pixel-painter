@@ -9,6 +9,7 @@ import {
     HIDE_PIXEL_GRID,
     UPDATE_EDITOR_COLOR,
     ADD_PALETTE_COLOR,
+    REMOVE_PALETTE_COLOR,
     CLEAR_CANVAS
 } from "../constants/action-types";
 
@@ -119,7 +120,7 @@ function rootReducer(state = initialState, action) {
     }
 
     if(action.type === ADD_PALETTE_COLOR){
-        let colorInPalette = state.colorPalette.some(x => x.value === action.value);
+        let colorInPalette = state.colorPalette.some(x => x.color === action.color);
         if(!colorInPalette){
             return {
                 ...state,
@@ -127,18 +128,28 @@ function rootReducer(state = initialState, action) {
                     ...state.colorPalette,
                     {
                         id: action.id,
-                        value: action.value,
+                        color: action.color,
                     }
                 ]
             }
         }
     }
 
+    if(action.type === REMOVE_PALETTE_COLOR){
+        let colouredPixels = state.pixels.filter(x => x.color === action.color);
+        if(colouredPixels.length === 0){
+            return {
+                ...state,
+                colorPalette: state.colorPalette.filter(x => x.color !== action.color)
+            }
+        }
+    }    
+
     if(action.type === CLEAR_CANVAS){
         return {
             ...state,
-            pixels: state.pixels.map(pixel => {
-                let newPixel = pixel;
+            pixels: state.pixels.map(x => {
+                let newPixel = x;
                 newPixel.color = state.defaultPixelColor;
                 return newPixel;
             }),

@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updatePixel, addPaletteColor } from "../actions"
+import { 
+    updatePixel,
+    addPaletteColor,
+    removePaletteColor
+} from "../actions"
 
 class Pixel extends React.Component {
 
@@ -24,7 +28,7 @@ class Pixel extends React.Component {
         return pixelStyle;
     }
 
-    handlePixelClick(event, id){
+    handlePixelClick(event, id, color){
         event.preventDefault();
         if(event.buttons === 1){
             this.props.dispatch(updatePixel({ 
@@ -37,6 +41,7 @@ class Pixel extends React.Component {
                 id, 
                 color: this.props.defaultPixelColor
             }));
+            this.props.dispatch(removePaletteColor(color));
         }
         return false;
     }
@@ -45,8 +50,8 @@ class Pixel extends React.Component {
         return <div 
                 className="pixel" 
                 style={this.pixelStyle()}
-                onMouseDown={(event) => this.handlePixelClick(event, this.props.id)}
-                onMouseOver={(event) => this.handlePixelClick(event, this.props.id)}
+                onMouseDown={(event) => this.handlePixelClick(event, this.props.id, this.props.color)}
+                onMouseOver={(event) => this.handlePixelClick(event, this.props.id, this.props.color)}
                 onContextMenu={(event) => event.preventDefault()}
     ></div>;
     };

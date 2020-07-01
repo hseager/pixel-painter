@@ -10,8 +10,8 @@ class ColorPalette extends React.Component {
                 <div className="color-palette">
                     <h4>Color Palette</h4>
                     <div className="colors">
-                        {this.props.colorPalette.map(color => (
-                            <Color key={color.id} color={color.value} />
+                        {this.props.colorPalette.map(x => (
+                            <Color key={x.id} color={x.color} />
                         ))}
                     </div>
                 </div>
