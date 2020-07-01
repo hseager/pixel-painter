@@ -7,8 +7,10 @@ import { addPixel } from "../actions";
 class Canvas extends React.Component {
 
     componentDidMount() {
-        for(let i = 0; i < this.props.columns * this.props.rows; i++){
-            this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
+        if(this.props.pixels.length === 0){
+            for(let i = 0; i < this.props.columns * this.props.rows; i++){
+                this.props.dispatch(addPixel({ color: this.props.defaultPixelColor }));
+            }
         }
     }
 

@@ -1,4 +1,6 @@
 
+import { v4 as uuid } from 'uuid';
+
 import { 
     UPDATE_PIXEL_SIZE,
     UPDATE_COLUMNS,
@@ -32,11 +34,10 @@ export function updateRows(rows) {
     };
 }
 
-let nextPixelId = 0;
 export function addPixel(pixel) {
     return { 
         type: ADD_PIXEL, 
-        id: nextPixelId++,
+        id: uuid(),
         color: pixel.color,
         index: pixel.index
     };
@@ -71,11 +72,10 @@ export function updateEditorColor(color){
     }
 }
 
-let nextPaletteColorId = 0;
 export function addPaletteColor(color){
     return { 
         type: ADD_PALETTE_COLOR, 
-        id: nextPaletteColorId++,
+        id: uuid(),
         value: color
     };
 }
