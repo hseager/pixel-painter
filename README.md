@@ -3,6 +3,15 @@ A pixel art creation app made with React & Redux
 
 Demo: [https://hseager.github.io/pixel-painter/](https://hseager.github.io/pixel-painter/)
 
+## Features
+- Localstorage save
+- Right click to remove colour
+- Colour palette for quick colour selection
+
+## Todo
+- Export feature
+- Improve styling
+
 ![screenshot](public/screenshot.jpg)
 
 ### `npm start`
