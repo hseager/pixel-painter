@@ -1,5 +1,5 @@
 # Pixel Painter
-A pixel art creation app made with React
+A pixel art creation app made with React & Redux
 
 Demo: [https://hseager.github.io/pixel-painter/](https://hseager.github.io/pixel-painter/)
 

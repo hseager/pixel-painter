@@ -8,12 +8,7 @@ class Controls extends React.Component {
 
     constructor(){
         super();
-        this.handleExportClick = this.handleExportClick.bind(this);
         this.handleNewClick = this.handleNewClick.bind(this);
-    }
-
-    handleExportClick(event){
-        console.log(123);
     }
 
     handleNewClick(){
@@ -23,7 +18,6 @@ class Controls extends React.Component {
     render(){
         return (
             <div className="controls">
-                <button className="control-button" onMouseDown={(event) => this.handleExportClick()}>Export</button>
                 <button className="control-button" onMouseDown={(event) => this.handleNewClick()}>New</button>
             </div>
         )
