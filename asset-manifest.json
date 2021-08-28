@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/pixel-painter/static/css/main.73f8a4f0.chunk.css",
-    "main.js": "/pixel-painter/static/js/main.9632918a.chunk.js",
-    "main.js.map": "/pixel-painter/static/js/main.9632918a.chunk.js.map",
+    "main.js": "/pixel-painter/static/js/main.d783f5ab.chunk.js",
+    "main.js.map": "/pixel-painter/static/js/main.d783f5ab.chunk.js.map",
     "runtime-main.js": "/pixel-painter/static/js/runtime-main.acb7da38.js",
     "runtime-main.js.map": "/pixel-painter/static/js/runtime-main.acb7da38.js.map",
-    "static/js/2.6a1b7a09.chunk.js": "/pixel-painter/static/js/2.6a1b7a09.chunk.js",
-    "static/js/2.6a1b7a09.chunk.js.map": "/pixel-painter/static/js/2.6a1b7a09.chunk.js.map",
+    "static/js/2.2f10c49d.chunk.js": "/pixel-painter/static/js/2.2f10c49d.chunk.js",
+    "static/js/2.2f10c49d.chunk.js.map": "/pixel-painter/static/js/2.2f10c49d.chunk.js.map",
     "index.html": "/pixel-painter/index.html",
-    "precache-manifest.3c30368ec0cd7ceb543b60a05cff2bd5.js": "/pixel-painter/precache-manifest.3c30368ec0cd7ceb543b60a05cff2bd5.js",
+    "precache-manifest.9ae11bda49855b83327b82e1ee6950c5.js": "/pixel-painter/precache-manifest.9ae11bda49855b83327b82e1ee6950c5.js",
     "service-worker.js": "/pixel-painter/service-worker.js",
     "static/css/main.73f8a4f0.chunk.css.map": "/pixel-painter/static/css/main.73f8a4f0.chunk.css.map",
-    "static/js/2.6a1b7a09.chunk.js.LICENSE.txt": "/pixel-painter/static/js/2.6a1b7a09.chunk.js.LICENSE.txt"
+    "static/js/2.2f10c49d.chunk.js.LICENSE.txt": "/pixel-painter/static/js/2.2f10c49d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.acb7da38.js",
-    "static/js/2.6a1b7a09.chunk.js",
+    "static/js/2.2f10c49d.chunk.js",
     "static/css/main.73f8a4f0.chunk.css",
-    "static/js/main.9632918a.chunk.js"
+    "static/js/main.d783f5ab.chunk.js"
   ]
 }
